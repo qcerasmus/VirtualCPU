@@ -8,13 +8,13 @@
  *        Version:  1.0
  *        Created:  10/14/14 12:03:48
  *       Revision:  none
- *       Compiler:  gcc
+ *       Compiler:  any - just use the 2011 c++ standards
  *
  *         Author:  Quinton Erasmus
  *
  * =====================================================================================
  */
-
+//#include "stdafx.h"
 #include <iostream>
 #include "Memory.h"
 #include "CPU.h"
@@ -51,8 +51,23 @@ int main()
 	//Halting
 	memory->Write(11, 0);
 
+	cout << "Do you want to list the memory?";
+	char yesNo;
+	cin >> yesNo;
+	if ( yesNo == 'Y' || yesNo == 'y' )
+	{
+		for (byte currentAddress = 0; currentAddress < memory->m_max_address; ++currentAddress)
+		{
+			// Again, add "(int)" to force usage as a number
+			cout << "Address [" << (int)currentAddress << "] = " << (int)memory->Read(currentAddress) << endl;
+		}
+	}
+
 	cout << "Creating a CPU instance" << endl;
 	CPU* cpu = new CPU(memory);
+	cout << "Ready" << endl;
+	cout << "Starting" << endl;
+	cpu->Run();
 	cout << "Complete" << endl;
 	
 	delete cpu, memory;

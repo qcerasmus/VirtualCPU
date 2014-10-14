@@ -8,12 +8,13 @@
  *        Version:  1.0
  *        Created:  10/14/14 11:24:55
  *       Revision:  none
- *       Compiler:  gcc
+ *       Compiler:  any - just use the 2011 c++ standards
  *
  *         Author:  Quinton Erasmus
  *
  * =====================================================================================
  */
+//#include "stdafx.h"
 #include "Memory.h"
 
 namespace CPU_4001

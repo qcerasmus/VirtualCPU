@@ -8,13 +8,14 @@
  *        Version:  1.0
  *        Created:  10/14/14 11:38:51
  *       Revision:  none
- *       Compiler:  g++
+ *       Compiler:  any - just use the 2011 c++ standards
  *
  *         Author:  Quinton Erasmus
  *
  * =====================================================================================
  */
 
+//#include "stdafx.h"
 #include "CPU.h"
 #include <iostream>
 
@@ -44,18 +45,18 @@ namespace CPU_4001
 	void CPU::Reset()
 	{
 		m_halt 				= false;
-		m_program_counter 	= c_base_address;
+		m_program_counter 	= m_base_address;
 		m_overflow_error 	= false;
 		m_underflow_error 	= false;
 		m_signed_mode 		= false;
 	}
 	
-	const byte& CPU::Fetch()
+	const byte CPU::Fetch()
 	{
 		byte l_op_code = 0;
 		l_op_code = m_memory->Read(m_program_counter);
 		++m_program_counter;
-		if(m_program_counter > c_address_ceiling)
+		if(m_program_counter > m_address_ceiling)
 		{
 			Halt();
 		}
@@ -140,7 +141,7 @@ namespace CPU_4001
 		while(!m_halt)
 		{
 			//Fetch into memory location
-			m_memory->Write(c_reserved_address, Fetch());
+			m_memory->Write(m_reserved_address, Fetch());
 			//decode from the reserved memory address
 			Decode(m_memory->Read(m_reserved_address));
 		}

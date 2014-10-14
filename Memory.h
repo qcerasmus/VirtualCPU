@@ -8,7 +8,7 @@
  *        Version:  1.0
  *        Created:  10/14/14 11:18:54
  *       Revision:  none
- *       Compiler:  gcc
+ *       Compiler:  any - just use the 2011 c++ standards
  *
  *         Author:  Quinton Erasmus
  *
